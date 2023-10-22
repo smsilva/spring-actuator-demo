@@ -13,6 +13,9 @@ public class PersonMemoryRepository {
     private final Map<Long, Person> people = new ConcurrentHashMap<>();
 
     public PersonMemoryRepository() {
+        people.put(1L, new Person(1L, "Silvio Silva"));
+        people.put(2L, new Person(2L, "Patrícia Alves"));
+        people.put(3L, new Person(3L, "Larissa Silva"));
     }
 
     public Person save(Person person) {
