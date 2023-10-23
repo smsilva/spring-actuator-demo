@@ -1,8 +1,6 @@
 package com.github.smsilva.spring.actuator.demo;
 
-import io.micrometer.core.annotation.Counted;
 import io.micrometer.core.annotation.Timed;
-import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.Gauge;
 import io.micrometer.core.instrument.MeterRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,23 +36,17 @@ public class PersonController {
                 register(meterRegistry);
     }
 
-    @Counted
     @PostMapping
+    @Timed(value = "person_create", description = "a number of POST requests to /person/create endpoint", percentiles={0.5,0.9})
     ResponseEntity<?> create(@NonNull Person person) {
-        Counter.builder("person_create")
-                .description("a number of POST requests to /person/create endpoint")
-                .register(meterRegistry)
-                .increment();
-
         repository.save(person);
 
         return ResponseEntity
                 .ok(person);
     }
 
-    @Counted
-    @Timed(description="time to retrieve person list", percentiles={0.5,0.9})
     @GetMapping
+    @Timed(value = "person_list_all", description = "time to retrieve all person list", percentiles={0.5,0.9})
     ResponseEntity<?> listAll() {
         List<Person> list = repository.findAll();
 
