@@ -1,4 +1,7 @@
 management:
+  server:
+    port: 9091
+
   info:
     java:
       enabled: true
@@ -13,10 +16,21 @@ management:
 
       base-path: /actuator
 
-  server:
-    port: 9091
-
   metrics:
     tags:
       application: app-demo
       environment: ${ENVIRONMENT:local}
+
+    distribution:
+      percentiles-histogram:
+        http:
+          server:
+            requests: true
+
+  tracing:
+    sampling:
+      probability: 1.0 # default is 0.1 (10%)
+
+logging:
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"

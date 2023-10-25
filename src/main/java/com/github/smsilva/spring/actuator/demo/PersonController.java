@@ -49,6 +49,8 @@ public class PersonController {
     @GetMapping
     @Timed(value = "person_list_all", description = "time to retrieve all person list", percentiles={0.5,0.9})
     ResponseEntity<?> listAll() {
+        LOGGER.info("Listing all persons");
+        
         List<Person> list = repository.findAll();
 
         return ResponseEntity
