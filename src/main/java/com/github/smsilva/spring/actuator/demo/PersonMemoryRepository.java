@@ -35,4 +35,8 @@ public class PersonMemoryRepository {
         return new ArrayList<>(people.values());
     }
 
+    public void remove(Long id) {
+        people.remove(id);
+    }
+
 }

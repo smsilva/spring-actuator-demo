@@ -3,13 +3,12 @@ package com.github.smsilva.spring.actuator.demo;
 import io.micrometer.core.annotation.Timed;
 import io.micrometer.core.instrument.Gauge;
 import io.micrometer.core.instrument.MeterRegistry;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.function.Supplier;
@@ -18,6 +17,8 @@ import java.util.function.Supplier;
 @RequestMapping("/person")
 @Timed("person")
 public class PersonController {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(PersonController.class);
 
     @Autowired
     PersonMemoryRepository repository;
@@ -52,6 +53,24 @@ public class PersonController {
 
         return ResponseEntity
                 .ok(list);
+    }
+
+    @DeleteMapping("/{id}")
+    @Timed(value = "person_delete", description = "time to delete a person", percentiles={0.5,0.9})
+    ResponseEntity<?> delete(@PathVariable Long id) {
+        LOGGER.info("Deleting person with id {}", id);
+
+        if (id == null) {
+            return ResponseEntity
+                    .badRequest()
+                    .build();
+        }
+
+        repository.remove(id);
+
+        return ResponseEntity
+                .noContent()
+                .build();
     }
 
 }
