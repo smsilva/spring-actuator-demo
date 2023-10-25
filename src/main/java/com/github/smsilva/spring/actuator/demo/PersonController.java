@@ -32,7 +32,7 @@ public class PersonController {
     public PersonController(MeterRegistry meterRegistry) {
         this.meterRegistry = meterRegistry;
 
-        Gauge.builder("person_total", fetchPersonCount()).
+        Gauge.builder("person_records_max", fetchPersonCount()).
                 description("The Person count in the Person Memory Repository").
                 register(meterRegistry);
     }
