@@ -1,5 +1,3 @@
-
-
 management:
   server:
     port: 9091
@@ -34,5 +32,8 @@ management:
       probability: 1.0 # default is 0.1 (10%)
 
 logging:
+  root:
+    level: INFO
+
   pattern:
     level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
