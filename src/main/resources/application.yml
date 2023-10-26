@@ -35,6 +35,12 @@ management:
     sampling:
       probability: 1.0 # default is 0.1 (10%)
 
+  zipkin:
+    tracing:
+      read-timeout: 1s
+      connect-timeout: 10s
+      endpoint: ${ZIPKIN_ENDPOINT:-http://localhost:9411/api/v2/spans}
+
 logging:
   level:
     root: INFO
