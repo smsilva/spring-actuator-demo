@@ -17,6 +17,10 @@
 
 	<properties>
 		<java.version>17</java.version>
+		<dockerfile-maven-plugin-version>1.4.13</dockerfile-maven-plugin-version>
+		<logback-jackson-version>0.1.5</logback-jackson-version>
+		<opentelemetry-exporter-zipkin>1.31.0</opentelemetry-exporter-zipkin>
+		<micrometer-tracing-bridge-otel>1.1.6</micrometer-tracing-bridge-otel>
 	</properties>
 
 	<dependencies>
@@ -32,23 +36,23 @@
 		<dependency>
 			<groupId>io.micrometer</groupId>
 			<artifactId>micrometer-tracing-bridge-otel</artifactId>
-			<version>1.1.6</version>
+			<version>${micrometer-tracing-bridge-otel}</version>
 		</dependency>
 		<dependency>
 			<groupId>io.opentelemetry</groupId>
 			<artifactId>opentelemetry-exporter-zipkin</artifactId>
-			<version>1.31.0</version>
+			<version>${opentelemetry-exporter-zipkin}</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>ch.qos.logback.contrib</groupId>
 			<artifactId>logback-json-classic</artifactId>
-			<version>0.1.5</version>
+			<version>${logback-jackson-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>ch.qos.logback.contrib</groupId>
 			<artifactId>logback-jackson</artifactId>
-			<version>0.1.5</version>
+			<version>${logback-jackson-version}</version>
 		</dependency>
 
 		<!-- Contains aspectj - required by TimedAspect -->
@@ -84,7 +88,7 @@
 			<plugin>
 				<groupId>com.spotify</groupId>
 				<artifactId>dockerfile-maven-plugin</artifactId>
-				<version>1.4.13</version>
+				<version>${dockerfile-maven-plugin-version}</version>
 				<executions>
 					<execution>
 						<id>default</id>
