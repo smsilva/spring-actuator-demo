@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<included>
+	<appender name="FILE_JSON" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOGS_DIRECTORY}/actuator-demo.json</file>
+		<encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+			<layout class="ch.qos.logback.contrib.json.classic.JsonLayout">
+				<jsonFormatter class="ch.qos.logback.contrib.jackson.JacksonJsonFormatter">
+					<prettyPrint>false</prettyPrint>
+				</jsonFormatter>
+				<timestampFormat>${TIMESTAMP_FORMAT_WITH_TIMEZONE}</timestampFormat>
+				<timestampFormatTimezoneId>Etc/UTC</timestampFormatTimezoneId>
+				<appendLineSeparator>true</appendLineSeparator>
+			</layout>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOGS_DIRECTORY}/archived/actuator-demo-%d{yyyy-MM-dd}.%i.json</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+	</appender>
+</included>

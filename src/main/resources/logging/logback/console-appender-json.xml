@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<included>
+	<appender name="CONSOLE_JSON" class="ch.qos.logback.core.ConsoleAppender">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>${CONSOLE_LOG_THRESHOLD}</level>
+		</filter>
+		<layout class="ch.qos.logback.contrib.json.classic.JsonLayout">
+			<jsonFormatter class="ch.qos.logback.contrib.jackson.JacksonJsonFormatter">
+				<prettyPrint>${LOGS_CONSOLE_JSON_PRETTY:-true}</prettyPrint>
+			</jsonFormatter>
+			<timestampFormat>${TIMESTAMP_FORMAT_WITH_TIMEZONE}</timestampFormat>
+			<timestampFormatTimezoneId>Etc/UTC</timestampFormatTimezoneId>
+			<appendLineSeparator>true</appendLineSeparator>
+		</layout>
+	</appender>
+</included>
