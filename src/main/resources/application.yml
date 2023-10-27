@@ -32,7 +32,7 @@ management:
             requests: true
 
   tracing:
-    enabled: true
+    enabled: false
     sampling:
       probability: 1.0 # default is 0.1 (10%)
 
@@ -48,4 +48,4 @@ logging:
     org.springframework.web: OFF
 
   pattern:
-    level: "%5p [${spring.application.name}][%X{traceId:-}:%X{spanId:-}]"
+    level: "%5p [${spring.application.name}][%X{traceId:-}-%X{spanId:-}]"

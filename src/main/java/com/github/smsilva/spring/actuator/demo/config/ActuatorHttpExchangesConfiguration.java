@@ -1,4 +1,4 @@
-package com.github.smsilva.spring.actuator.demo;
+package com.github.smsilva.spring.actuator.demo.config;
 
 import org.springframework.boot.actuate.web.exchanges.HttpExchangeRepository;
 import org.springframework.boot.actuate.web.exchanges.InMemoryHttpExchangeRepository;
