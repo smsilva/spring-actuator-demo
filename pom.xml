@@ -101,7 +101,6 @@
 				<configuration>
 					<repository>${project.artifactId}</repository>
 					<dockerfile>Dockerfile</dockerfile>
-					<finalName>foobar</finalName>
 					<buildArgs>
 						<JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
 					</buildArgs>
