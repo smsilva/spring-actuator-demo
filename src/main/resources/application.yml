@@ -38,8 +38,8 @@ management:
 
   zipkin:
     tracing:
-      read-timeout: 1s
-      connect-timeout: 10s
+      read-timeout: ${ZIPKIN_READ_TIMEOUT:10s}
+      connect-timeout: ${ZIPKIN_CONNECT_TIMEOUT:1s}
       endpoint: ${ZIPKIN_ENDPOINT:http://localhost:9411/api/v2/spans}
 
 logging:
