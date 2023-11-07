@@ -1,4 +1,4 @@
-FROM azul/zulu-openjdk-alpine:17-jre
+FROM azul/zulu-openjdk-alpine:17-latest
 
 RUN addgroup -S spring && \
     adduser -S spring -G spring
