@@ -6,8 +6,8 @@
 			<layout class="ch.qos.logback.classic.log4j.XMLLayout">
 				<locationInfo>true</locationInfo>
 				<properties>true</properties>
-				<timestampFormat>${TIMESTAMP_FORMAT_WITH_TIMEZONE}</timestampFormat>
-				<timestampFormatTimezoneId>Etc/UTC</timestampFormatTimezoneId>
+				<timestampFormat>${LOG_DATEFORMAT_PATTERN}</timestampFormat>
+<!--				<timestampFormatTimezoneId>${SPRING_APPLICATION_TIME_ZONE}</timestampFormatTimezoneId>-->
 			</layout>
 		</encoder>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">

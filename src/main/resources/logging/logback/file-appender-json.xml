@@ -7,8 +7,8 @@
 				<jsonFormatter class="ch.qos.logback.contrib.jackson.JacksonJsonFormatter">
 					<prettyPrint>false</prettyPrint>
 				</jsonFormatter>
-				<timestampFormat>${TIMESTAMP_FORMAT_WITH_TIMEZONE}</timestampFormat>
-				<timestampFormatTimezoneId>Etc/UTC</timestampFormatTimezoneId>
+				<timestampFormat>${LOG_DATEFORMAT_PATTERN}</timestampFormat>
+<!--				<timestampFormatTimezoneId>${SPRING_APPLICATION_TIME_ZONE}</timestampFormatTimezoneId>-->
 				<appendLineSeparator>true</appendLineSeparator>
 			</layout>
 		</encoder>

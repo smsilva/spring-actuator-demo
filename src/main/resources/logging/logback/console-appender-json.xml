@@ -8,7 +8,7 @@
 			<jsonFormatter class="ch.qos.logback.contrib.jackson.JacksonJsonFormatter">
 				<prettyPrint>${LOGS_CONSOLE_JSON_PRETTY:-true}</prettyPrint>
 			</jsonFormatter>
-			<timestampFormat>${TIMESTAMP_FORMAT_WITH_TIMEZONE}</timestampFormat>
+			<timestampFormat>${LOG_DATEFORMAT_PATTERN}</timestampFormat>
 			<timestampFormatTimezoneId>Etc/UTC</timestampFormatTimezoneId>
 			<appendLineSeparator>true</appendLineSeparator>
 		</layout>

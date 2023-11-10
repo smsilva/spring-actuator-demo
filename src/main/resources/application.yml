@@ -1,6 +1,10 @@
 spring:
   application:
     name: actuator-demo
+    timezone: "${TZ:UTC}"
+
+  jackson:
+    time-zone: "${TZ:UTC}"
 
 management:
   server:
